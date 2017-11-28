@@ -254,7 +254,6 @@ BossKeyPlugin
 	
 	private JIntellitype 	j_inst;
 	
-	private boolean	is_hidden		= false;
 	private long	last_hide_event	= -1;
 	
 	private BooleanParameter 	bk_enable;
@@ -472,12 +471,7 @@ BossKeyPlugin
 			
 			if ( last_hide_event < 0 || ( now - last_hide_event > 250 )){
 				
-				synchronized( this ){
-					
-					is_hidden = !is_hidden;
-				}
-				
-				plugin_interface.getUIManager().setEverythingHidden( is_hidden );
+				plugin_interface.getUIManager().toggleEverythingHidden();
 			}
 		}
 	}
